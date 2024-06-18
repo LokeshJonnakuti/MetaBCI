@@ -13,9 +13,9 @@ from pylsl.pylsl import StreamInlet, resolve_byprop
 from .utils import NeuroScanPort, NeuraclePort, _check_array_like
 import threading
 from copy import copy
-import random
 from scipy import signal
 from PIL import Image
+import secrets
 
 
 # prefunctions
@@ -1429,8 +1429,8 @@ class AVEP(VisualStim):
             )
             for stim_i in range(self.stim_frames):
                 for clu_i in range(self.cluster_num):
-                    width_rand = random.randint(-3, 3)
-                    height_rand = random.randint(-3, 3)
+                    width_rand = secrets.SystemRandom().randint(-3, 3)
+                    height_rand = secrets.SystemRandom().randint(-3, 3)
                     self.stim_dot_pos[
                         stim_i,
                         clu_i * self.n_elements: (clu_i + 1) * self.n_elements,
