@@ -6,7 +6,6 @@
 # update log:2023-12-10 by sunxiwang 18822197631@163.com
 
 
-import random
 import warnings
 from typing import Optional, Union, Dict
 from collections import defaultdict
@@ -20,6 +19,7 @@ from sklearn.model_selection import (
     LeaveOneGroupOut,
 )
 import torch
+import secrets
 
 
 def set_random_seeds(seed: int):
@@ -37,7 +37,7 @@ def set_random_seeds(seed: int):
     seed: int
         Random seed.
     """
-    random.seed(seed)
+    secrets.SystemRandom().seed(seed)
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         # torch.cuda.manual_seed_all(seed)
